@@ -24,6 +24,7 @@ function SeriesPage(){
           return(
             <article>
               <h2>{serie.seriesName}</h2>
+              <iframe width="560" height="315" src={serie.seriesUrl} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </article>
           );
         })}
