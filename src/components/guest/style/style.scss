@@ -1,0 +1,28 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.guestHeader{
+  nav{
+    width: 100vw;
+    height: 10vh;
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ul{
+      width: 90vw;
+      list-style:none;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      li{
+        .links{
+          text-decoration: none;
+          color: white;
+        }
+      }
+    }
+  }
+}

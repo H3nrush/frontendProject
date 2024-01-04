@@ -2,11 +2,12 @@ import { useState } from "react";
 
 function Login(){
   const [message , setMessage] = useState(null);
+
   const handleLogin = async (event) => {
     event.preventDefault();
 
     const username = event.target.username.value;
-    const password = event.target.username.value;  
+    const password = event.target.password.value;  
 
     const loginData = {
       username ,
@@ -16,7 +17,7 @@ function Login(){
 
     const loginResponse = await fetch("http://localhost:8080/api/users/login" , {
       method: "POST" ,
-      Headers: {
+      headers: {
         "Content-Type": "application/json" ,
       },
       body: loginDataJson ,
@@ -27,10 +28,18 @@ function Login(){
 
     if(token){
       localStorage.setItem("jwt" , token);
+      setTimeout(function() {
+        window.location.reload();
+      }, 1500);
       setMessage("You are connected!")
     } else {
-      setMessage("username or password is invalid!")
+      if(!username || !password){
+        setMessage("please full the cadre")
+      }else{
+        setMessage("username or password is invalid")
+      }
     }
+
   }
 
   return(
