@@ -1,26 +1,39 @@
-*{
-  margin: 0;
-  padding: 0;
-}
 
 .guestHeader{
   nav{
-    width: 100vw;
+    width: 100%;
     height: 10vh;
-    background-color: blue;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    position: relative;
     ul{
-      width: 90vw;
+      width: 300px;
+      position: absolute;
+      right: 20px;
       list-style:none;
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: space-around;
       li{
         .links{
           text-decoration: none;
+          color: black;
+          font: bolder;
+          padding: 20px;
+          font-size: 10px;
+          background-color: rgb(3, 154, 255);
+          border-radius: 50px;
+          display: flex;
+          border: 1px black groove;
+          cursor: pointer;
+          user-select: none;
+          transition: all 0.1s ease-in-out;
+        }
+        .links:hover{
+          background-color: rgb(24, 23, 23);
           color: white;
+          border: 1px white groove;
         }
       }
     }

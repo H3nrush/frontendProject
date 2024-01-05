@@ -1,0 +1,88 @@
+.section-login {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-login {
+  height: 500px;
+  width: 500px;
+  background-color: #039aff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px black groove;
+  border-radius: 50px;
+  position: relative;
+}
+
+.input-info {
+  height: 25px;
+  width: 250px;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  padding: 10px;
+}
+
+.margin-info {
+  margin: 6px 0 40px 0;
+}
+
+.message-info {
+  margin: 0;
+  position: absolute;
+  top: 40px;
+}
+
+.info-submit {
+  height: 35px;
+  width: 70px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 70px;
+  transition: all 0.2s ease-out;
+}
+
+.info-submit:hover {
+  background-color: #0b0b2c;
+  color: white;
+}
+
+.redirectHome {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.redirectHome img {
+  height: 50px;
+  transition: all 0.3s ease-out;
+}
+
+.redirectHome img:hover {
+  height: 55px;
+}
+
+.SignUp {
+  text-decoration: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 14px;
+  border-radius: 50px;
+  color: white;
+  display: flex;
+  align-items: center;
+  background-color: black;
+  transition: all 0.3s ease-out;
+}
+
+.SignUp:hover {
+  padding: 18px;
+}

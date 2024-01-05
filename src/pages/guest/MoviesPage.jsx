@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/guest/Header";
-import Login from "./Login";
+import { useNavigate } from "react-router-dom";
 
 function MoviesPage(){
+  const navigat = useNavigate();
   const [Movies , setMovies] = useState(null);
 
   useEffect(()=>{
@@ -20,7 +21,13 @@ function MoviesPage(){
     if(token){
       setIsUser(true)
     }
-  },[]);
+    if(!token){
+      setTimeout(function(){
+        navigat("/Login")
+      },2000)
+    }
+
+  },[navigat]);
 
   return(
     <>
@@ -45,9 +52,7 @@ function MoviesPage(){
       )}
       </>
       ):(
-        <>
-          <Login />
-        </>
+       <h1>Please Login .. !</h1>
       )}
     </>
   )
