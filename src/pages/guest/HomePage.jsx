@@ -39,7 +39,7 @@ useEffect(()=>{
         })}
       </div>
       ) : (
-        <p>Loading...!</p>
+        <h1 className="loading">Loading...!</h1>
       )}
   </>)
 }

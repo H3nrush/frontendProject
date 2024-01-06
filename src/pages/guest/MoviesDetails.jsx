@@ -26,7 +26,7 @@ const MovieDetails = () => {
             <img src={movies.data.moviesPoster} alt={movies.data.moviesName} height="200px"/>
           </div>
       ) : (
-        <p>En cours de chargement</p>
+        <p>loading...</p>
       )}
     </>
   );

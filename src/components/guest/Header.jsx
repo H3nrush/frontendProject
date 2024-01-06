@@ -45,14 +45,31 @@ function Header() {
     window.location.reload();
   };
 
+  const handleDisplay = ()=> {
+    if(document.querySelector('.userInfo').style.display === "none"){
+      document.querySelector('.userInfo').style.display = "flex";
+    }else{
+      document.querySelector('.userInfo').style.display = "none";
+    }
+  }
+  const DisplayNone = () =>{
+    document.querySelector('.userInfo').style.display = "none";
+  }
+
   return (
     <header className="guestHeader">
       <nav>
         <ul>
           <li><Link to='/' className="links">Home</Link></li>
           <li><Link to='/Movies' className="links">Movies</Link></li>
+
+          <div className="userInfo" onMouseLeave={DisplayNone}>
+              <Link to="/MyProfile" className="logout" >My Profile</Link>
+              <div onClick={handleLogout} className="logout">logout</div>
+          </div>
+
           <li>{isUser ? (
-            <div onClick={handleLogout} className="links">logout</div>
+            <li><Link className="links" onClick={handleDisplay}><img src="https://img.icons8.com/external-tanah-basah-basic-outline-tanah-basah/15/000000/external-user-social-media-ui-tanah-basah-basic-outline-tanah-basah.png" alt="user" /></Link></li>
           ) : (
             <Link to="/Login" className="links">Login</Link>
           )}</li>
@@ -60,6 +77,7 @@ function Header() {
         <div className='label' onClick={themeHandle}></div>
       </nav>
     </header>
+    // <p className="user-info">{props.data}</p>
   );
 }
 

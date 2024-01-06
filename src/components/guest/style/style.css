@@ -42,3 +42,26 @@
   color: white;
   border: 1px white groove;
 }
+
+.userInfo {
+  position: fixed;
+  top: 10vh;
+  right: 10px;
+  border: 1px black groove;
+  background-color: rgba(3, 154, 255, 0.3);
+  height: 500px;
+  width: 400px;
+  border-radius: 50px;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.userInfo .logout {
+  background-color: black;
+  padding: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}

@@ -7,6 +7,7 @@ import MoviesPage from './pages/guest/MoviesPage';
 import MoviesDetails from './pages/guest/MoviesDetails';
 import Login from './pages/guest/Login';
 import CreateAccount from './pages/guest/CreateAccount';
+import Profile from './pages/guest/profile/Profile';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/Login' element={<Login />} />
+        <Route path='/MyProfile' element={<Profile />}/>
         <Route path='/CreateAccount' element={<CreateAccount />} />
         <Route path='/Movies' element={<MoviesPage />} />
         <Route path='/Movie/Details/:id' element={<MoviesDetails />} />

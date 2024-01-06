@@ -42,3 +42,20 @@
   flex-wrap: wrap;
   z-index: -1;
 }
+
+.loading {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  color: #0084ff;
+  animation: loading infinite 0.2s;
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
