@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import './style/signup/style.css';
+import Header from "../../components/guest/Header";
 
 function CreateAccount(){
 
@@ -38,6 +40,10 @@ if(token){
 }else{
   setMessage("an error from the server , please try again later !")
 }
+if(!username || !password){
+  setMessage("Please choose your username and password!")
+  document.querySelector(".message-signup").style.color = "red";
+}
 }
 
 
@@ -45,17 +51,24 @@ if(token){
 
   return(
     <>
-    {message && <p>{message}</p>}
-      <form onSubmit={handleCreateAccount} >
+    <Header />
+    <section className="section-signup">
+      <form onSubmit={handleCreateAccount} className="form-signup" >
+      {message && <p className="message-signup">{message}</p>}
         <label >
-          <input type="text" name="username" />
+        <div>Choose your username :</div>
+          <input type="text" name="username" className="input-signup"/>
         </label>
         <label>
-          <input type="password" name="password" />
+        <div>Choose your password:</div>
+          <input type="password" name="password" className="input-signup"/>
         </label>
-        <input type="submit" value="Create Account"/>
+        <input type="submit" value="Create Account" className="submit-signup"/>
+        <Link to="/Login" className="back-Login" >You have already an account ? click to Login</Link>
       </form>
+    </section>
     </>
+
   )
 }
 export default CreateAccount;

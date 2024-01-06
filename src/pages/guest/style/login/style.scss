@@ -34,45 +34,29 @@
   top: 40px;
 }
 .info-submit{
-  height: 35px;
-  width: 70px;
+  padding: 10px 20px 10px 20px;
   border-radius: 50px;
   border: none;
   cursor: pointer;
   position: absolute;
-  bottom: 70px;
+  bottom: 90px;
   transition: all 0.2s ease-out;
 }
 .info-submit:hover{
   background-color: rgb(11, 11, 44);
   color: white;
 }
-.redirectHome{
-  position: absolute;
-  top:10px;
-  left: 10px;
-  img{
-    height: 50px;
-    transition: all 0.3s ease-out;
-  }
-  img:hover{
-    height: 55px;
-  }
-}
 .SignUp{
   text-decoration: none;
+  color:blue;
   position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 14px;
+  font-size: 15px;
+  bottom: 30px;
   border-radius: 50px;
-  color: white;
   display: flex;
   align-items: center;
-  background-color: black;
   transition: all 0.3s ease-out;
 }
 .SignUp:hover{
-
-  padding: 18px;
+  color: black;
 }

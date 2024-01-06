@@ -1,10 +1,15 @@
+.guestHeader {
+  position: fixed;
+}
+
 .guestHeader nav {
-  width: 100%;
+  width: 100vw;
   height: 10vh;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   position: relative;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .guestHeader nav ul {

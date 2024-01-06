@@ -38,11 +38,11 @@ function MoviesPage(){
       <h1>List Of the Movies:</h1>
       {Movies ? (
       <>
-        {Movies.map((serie)=>{
+        {Movies.map((movies)=>{
           return(
             <article>
-              <h2>{serie.moviesName}</h2>
-              <iframe width="560" height="315" src={serie.moviesUrl} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <h2>{movies.moviesName}</h2>
+              <iframe width="560" height="315" src={movies.moviesUrl} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </article>
           );
         })}
