@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import Header from "../../components/guest/Header";
+import Header from "../../../components/guest/Header";
 import { useNavigate } from "react-router-dom";
-
-function MoviesPage(){
+function Mystry(){
   const navigat = useNavigate();
   const [Movies , setMovies] = useState(null);
 
@@ -41,7 +40,7 @@ function MoviesPage(){
         {Movies.map((movies)=>{
           return(
             <>
-            {movies.moviesGenre.includes(`Action`)  && (
+            {movies.moviesGenre.includes(`Mystry`)  && (
               <p>{movies.moviesName}</p>
             )}
             </>
@@ -58,4 +57,4 @@ function MoviesPage(){
     </>
   )
 }
-export default MoviesPage;
+export default Mystry;

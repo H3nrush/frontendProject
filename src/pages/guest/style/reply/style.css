@@ -1,0 +1,43 @@
+.comments {
+  height: 10vh;
+  width: 68vw;
+}
+
+.comments div {
+  width: 100%;
+  height: 50%;
+}
+
+.div-reply {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.div-reply .reply {
+  width: 85%;
+  height: 5vh;
+  background-color: unset;
+  border: 1px rgba(80, 80, 80, 0.78) groove;
+  color: #039aff;
+  padding-left: 20px;
+  outline: none;
+  font-size: 15px;
+}
+
+.div-reply .submit {
+  height: 5vh;
+  width: 15%;
+  color: #039aff;
+  cursor: pointer;
+  transition: all .2s;
+  font-size: 15px;
+}
+
+.div-reply .submit:hover {
+  background-color: #555;
+}
+
+.div-reply .submit:active {
+  color: white;
+}

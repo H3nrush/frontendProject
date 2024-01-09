@@ -1,5 +1,6 @@
 .guestHeader {
   position: fixed;
+  z-index: 1;
 }
 
 .guestHeader nav {
@@ -48,20 +49,52 @@
   top: 10vh;
   right: 10px;
   border: 1px black groove;
-  background-color: rgba(3, 154, 255, 0.3);
-  height: 500px;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 10vh;
   width: 400px;
-  border-radius: 50px;
   z-index: 10000;
   display: none;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  justify-content: space-around;
+  flex-direction: row;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px rgba(255, 255, 255, 0.1) groove;
+  animation-duration: 0.3s;
+}
+
+.userInfo .borderPro {
+  border: 1px rgba(255, 255, 255, 0.1) groove;
 }
 
 .userInfo .logout {
-  background-color: black;
-  padding: 10px;
-  border-radius: 50px;
   cursor: pointer;
+  color: white;
+}
+
+@keyframes menu {
+  from {
+    height: 0;
+  }
+  to {
+    height: 10vh;
+  }
+}
+
+@keyframes menuClose {
+  from {
+    height: 10vh;
+  }
+  to {
+    height: 0;
+  }
+}
+
+.myProf {
+  color: white;
+  text-decoration: none;
+}
+
+.myProf, .logout {
+  transition: all 0.2s ease;
 }

@@ -1,0 +1,51 @@
+.box-details {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 10vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.box-details .movie-info {
+  height: auto;
+  width: 30vw;
+  border-left: 1px rgba(255, 255, 255, 0.1) groove;
+  padding: 1vw;
+  text-wrap: wrap;
+  overflow: scroll;
+  font-family: sans-serif;
+}
+
+.box-details .movie-info p {
+  font-size: 0.8vw;
+  margin-bottom: 3vw;
+}
+
+.box-details .movie-info h3 {
+  font-size: 1.5vw;
+  padding-top: 3vw;
+  border-top: 1px rgba(255, 255, 255, 0.1) groove;
+}
+
+.box-details .movie-info .img {
+  width: 15vw;
+}
+
+.box-details .movie-ifram {
+  height: auto;
+  width: 68vw;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.box-details .movie-ifram div iframe {
+  height: 60vh;
+  width: 68vw;
+}

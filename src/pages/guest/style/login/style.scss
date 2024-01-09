@@ -6,8 +6,9 @@
   justify-content: center;
 }
 .form-login{
-  height: 500px;
-  width: 500px;
+  height: 450px;
+  width: 450px;
+  margin: 25px;
   background-color: rgb(3, 154, 255);
   display: flex;
   align-items: center;
@@ -16,7 +17,7 @@
   border: 1px black groove;
   border-radius: 50px;
   position: relative;
-  z-index: 1;
+  z-index: 0;
 }
 .input-info{
   height: 25px;

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import './style/style.css'
-import './style/styleForBtn.css'
+import './style/style.css';
+import './style/styleForBtn.css';
+import './style/styleForGenre.css';
 
 function Header() {
   const setTheme = (isDarkMode) => {
@@ -48,31 +49,67 @@ function Header() {
   const handleDisplay = ()=> {
     if(document.querySelector('.userInfo').style.display === "none"){
       document.querySelector('.userInfo').style.display = "flex";
+      document.querySelector('.userInfo').style.animationName = "menu";
     }else{
-      document.querySelector('.userInfo').style.display = "none";
+      document.querySelector('.userInfo').style.animationName = "menuClose";
+      setTimeout(()=>{
+        document.querySelector('.userInfo').style.display = "none";
+      },250)
     }
   }
   const DisplayNone = () =>{
-    document.querySelector('.userInfo').style.display = "none";
+    document.querySelector('.userInfo').style.animationName = "menuClose";
+    setTimeout(()=>{
+      document.querySelector('.userInfo').style.display = "none";
+    },250)
   }
-
+  const handleGenreDisplay = () => {
+    let genreBox = document.querySelector('.genre');
+    if(genreBox.style.display === "none"){
+      genreBox.style.display = "flex";
+      genreBox.style.animationName = "genreBox";
+    } else {
+      genreBox.style.animationName = "genreBoxClose";
+      setTimeout(()=>{
+        genreBox.style = "display:none";
+      },250)
+    }
+  }
+const handleGenreNone = () => {
+  let genreBox = document.querySelector('.genre');
+  genreBox.style.animationName = "genreBoxClose";
+  setTimeout(()=>{
+    genreBox.style = "display:none";
+  },250)
+}
   return (
     <header className="guestHeader">
       <nav>
         <ul>
           <li><Link to='/' className="links">Home</Link></li>
-          <li><Link to='/Movies' className="links">Movies</Link></li>
+          <li>
+            <div className="links" onClick={handleGenreDisplay}>Genres</div>
+          </li>
+          <div className="genre" onMouseLeave={handleGenreNone}>
+            <div><Link className="genreKeys" to="/Movies/Genres/Action">Action</Link></div>
+            <div><Link className="genreKeys" to="/Movies/Genres/Fantasy">Fantasy</Link></div>
+            <div><Link className="genreKeys" to="/Movies/Genres/Gang">Gang</Link></div>
+            <div><Link className="genreKeys" to="/Movies/Genres/Historic" >Historic</Link></div>
+            <div><Link className="genreKeys" to="/Movies/Genres/Horror" >Horror</Link></div>
+            <div><Link className="genreKeys" to="/Movies/Genres/Mystry" >Mystry</Link></div>
+            <div><Link className="genreKeys" to="/Movies/Genres/ScienceFiction" >Science Fiction</Link></div>
+          </div>
 
           <div className="userInfo" onMouseLeave={DisplayNone}>
-              <Link to="/MyProfile" className="logout" >My Profile</Link>
+              <Link to="/MyProfile" className="myProf" >My Profile</Link>
               <div onClick={handleLogout} className="logout">logout</div>
           </div>
 
-          <li>{isUser ? (
+          {isUser ? (
             <li><Link className="links" onClick={handleDisplay}><img src="https://img.icons8.com/external-tanah-basah-basic-outline-tanah-basah/15/000000/external-user-social-media-ui-tanah-basah-basic-outline-tanah-basah.png" alt="user" /></Link></li>
           ) : (
-            <Link to="/Login" className="links">Login</Link>
-          )}</li>
+            <li><Link to="/Login" className="links">Login</Link></li>
+          )}
         </ul>
         <div className='label' onClick={themeHandle}></div>
       </nav>

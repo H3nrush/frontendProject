@@ -31,7 +31,7 @@ useEffect(()=>{
       <div className="div-allMovies">
         {Movies.map((movie)=>{
           return(
-            <div className="movie-box">
+            <div className="movie-box" key={movie.id}>
             {isUser ? (<div><Link to={`/Movie/Details/${movie.id}`}><img src={movie.moviesPoster} alt={movie.moviesName}/></Link></div>) : (<div><Link to="/Login"><img src={movie.moviesPoster} alt={movie.moviesName}/></Link></div>)}
               <p>{movie.moviesName}</p>
             </div>

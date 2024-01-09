@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import Header from "../../components/guest/Header";
+import Header from "../../../components/guest/Header";
 import { useNavigate } from "react-router-dom";
-
-function MoviesPage(){
+function Action(){
   const navigat = useNavigate();
   const [Movies , setMovies] = useState(null);
 
@@ -58,4 +57,4 @@ function MoviesPage(){
     </>
   )
 }
-export default MoviesPage;
+export default Action;
