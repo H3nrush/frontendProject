@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
 import './style/reply/allReply/style.css';
+import { jwtDecode } from 'jwt-decode';
 
 function AllReply(props) {
   const [allMoviesReply, setAllMoviesReply] = useState([]);
-
+  const [ownUser , setOwnUser] = useState();
+  const token = localStorage.getItem('jwt')
+  useEffect(()=>{
+    setOwnUser(jwtDecode(token).id)
+  },[token])
  
   useEffect(() => {
     const fetchReviews = async () => {
@@ -55,9 +60,8 @@ function AllReply(props) {
           <div key={reply.id} className='for-eachComment'>
             <p>{reply.content}</p>
 
-      <div className='delete-reply' onClick={() => handleDelete(reply.id)}>
-        Delete
-      </div>
+      {ownUser === reply.UserId && (<div className='delete-reply' onClick={() => handleDelete(reply.id)}>Delete</div>)}
+
 
           </div>
         ))}

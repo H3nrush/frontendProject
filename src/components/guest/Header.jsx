@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './style/style.css';
 import './style/styleForBtn.css';
 import './style/styleForGenre.css';
@@ -40,10 +40,10 @@ function Header() {
       setTheme(JSON.parse(storedTheme));
     }
   }, []);
-
+const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem('jwt');
-    window.location.reload();
+    navigate("/")
   };
 
   const handleDisplay = ()=> {
@@ -75,13 +75,7 @@ function Header() {
       },250)
     }
   }
-const handleGenreNone = () => {
-  let genreBox = document.querySelector('.genre');
-  genreBox.style.animationName = "genreBoxClose";
-  setTimeout(()=>{
-    genreBox.style = "display:none";
-  },250)
-}
+
   return (
     <header className="guestHeader">
       <nav>
@@ -90,7 +84,7 @@ const handleGenreNone = () => {
           <li>
             <div className="links" onClick={handleGenreDisplay}>Genres</div>
           </li>
-          <div className="genre" onMouseLeave={handleGenreNone}>
+          <div className="genre">
             <div><Link className="genreKeys" to="/Movies/Genres/Action">Action</Link></div>
             <div><Link className="genreKeys" to="/Movies/Genres/Fantasy">Fantasy</Link></div>
             <div><Link className="genreKeys" to="/Movies/Genres/Gang">Gang</Link></div>

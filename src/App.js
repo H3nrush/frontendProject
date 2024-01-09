@@ -15,6 +15,7 @@ import Historic from './pages/guest/genres/Historic';
 import Horror from './pages/guest/genres/Horror';
 import Mystry from './pages/guest/genres/Mystry';
 import ScienceFiction from './pages/guest/genres/ScienceFiction';
+import UpdateUser from './pages/guest/profile/update';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path='/Movies/Genres/Horror' element={<Horror />} />
         <Route path='/Movies/Genres/Mystry' element={<Mystry />} />
         <Route path='/Movies/Genres/ScienceFiction' element={<ScienceFiction />} />
+        <Route path='/MyProfile/Settings/Update' element={<UpdateUser />} />
 
       </Routes>
     </BrowserRouter>
