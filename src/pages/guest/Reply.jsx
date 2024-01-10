@@ -1,6 +1,7 @@
 import { useState } from "react";
 import './style/reply/style.css';
 import { useNavigate } from "react-router-dom";
+
 function Reply(props){
   const navigat = useNavigate();
   const [Reply , setReply] = useState();

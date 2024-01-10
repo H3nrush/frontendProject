@@ -19,10 +19,10 @@
     cursor: pointer;
     user-select: none;
     transition: all 0.1s ease-out;
-    color: white;
   }
   div:hover{
     background-color:rgba(0,0,0, 0.9);
+    color: rgb(3, 154, 255);
   }
   
   animation-duration: 0.3s;
@@ -39,4 +39,8 @@
   padding: 40px;
   color: white;
   text-decoration: none;
+  transition: all .3s ease-out;
+}
+.genreKeys:hover{
+  color: rgb(3, 154, 255);
 }

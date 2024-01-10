@@ -1,0 +1,24 @@
+.divGenre {
+  height: auto;
+  width: 100vw;
+  padding: 100px;
+  position: absolute;
+  top: 10vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  grid-gap: 40px;
+}
+
+.divGenre .divGenreMovies {
+  text-align: center;
+}
+
+.divGenre .divGenreMovies img {
+  height: 460px;
+}
+
+.divGenre .divGenreMovies p {
+  margin-top: 10px;
+  font-size: 20px;
+}

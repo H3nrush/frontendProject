@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "../../../components/guest/Header";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function Horror(){
   const navigat = useNavigate();
   const [Movies , setMovies] = useState(null);
@@ -32,16 +32,17 @@ function Horror(){
     <>
     <Header />
     {isUser ? (
-      <>
-      Movies page
-      <h1>List Of the Movies:</h1>
+      <div className="divGenre">
       {Movies ? (
       <>
         {Movies.map((movies)=>{
           return(
             <>
             {movies.moviesGenre.includes(`Horror`)  && (
+             <div className="divGenreMovies">
+             <Link to={`/Movie/Details/${movies.id}`}><img src={movies.moviesPoster} alt={movies.moviesName} /></Link>
               <p>{movies.moviesName}</p>
+             </div>
             )}
             </>
           );
@@ -50,9 +51,9 @@ function Horror(){
       ) : (
         <p>Loading...!</p>
       )}
-      </>
+      </div>
       ):(
-       <h1>Please Login .. !</h1>
+        <div className="divGenre"><h1>Please Login .. !</h1></div>
       )}
     </>
   )

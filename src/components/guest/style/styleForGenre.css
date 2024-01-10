@@ -22,11 +22,11 @@
   cursor: pointer;
   user-select: none;
   transition: all 0.1s ease-out;
-  color: white;
 }
 
 .genre div:hover {
   background-color: rgba(0, 0, 0, 0.9);
+  color: #039aff;
 }
 
 @keyframes genreBox {
@@ -51,4 +51,9 @@
   padding: 40px;
   color: white;
   text-decoration: none;
+  transition: all .3s ease-out;
+}
+
+.genreKeys:hover {
+  color: #039aff;
 }

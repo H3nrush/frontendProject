@@ -30,7 +30,7 @@
 }
 
 .div-allMovies {
-  height: 100vh;
+  height: auto;
   width: 100vw;
   padding: 5vw;
   position: absolute;

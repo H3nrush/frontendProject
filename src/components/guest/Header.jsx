@@ -50,6 +50,7 @@ const navigate = useNavigate();
     if(document.querySelector('.userInfo').style.display === "none"){
       document.querySelector('.userInfo').style.display = "flex";
       document.querySelector('.userInfo').style.animationName = "menu";
+      document.querySelector('.genre').style.display = "none";
     }else{
       document.querySelector('.userInfo').style.animationName = "menuClose";
       setTimeout(()=>{
@@ -68,6 +69,7 @@ const navigate = useNavigate();
     if(genreBox.style.display === "none"){
       genreBox.style.display = "flex";
       genreBox.style.animationName = "genreBox";
+      document.querySelector('.userInfo').style.display = "none";
     } else {
       genreBox.style.animationName = "genreBoxClose";
       setTimeout(()=>{
@@ -100,7 +102,7 @@ const navigate = useNavigate();
           </div>
 
           {isUser ? (
-            <li><Link className="links" onClick={handleDisplay}><img src="https://img.icons8.com/external-tanah-basah-basic-outline-tanah-basah/15/000000/external-user-social-media-ui-tanah-basah-basic-outline-tanah-basah.png" alt="user" /></Link></li>
+            <li><Link className="links" onClick={handleDisplay}><img src="https://img.icons8.com/ios-filled/50/039aff/user-male-circle.png" alt="user" /></Link></li>
           ) : (
             <li><Link to="/Login" className="links">Login</Link></li>
           )}

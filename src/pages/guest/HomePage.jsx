@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/guest/Header";
-import './style/homePage/style.css'
+import './style/homePage/style.css';
+import './style/homePage/loading/style.css'
 import { Link, useNavigate } from "react-router-dom";
 
 function HomePage(){
@@ -39,7 +40,14 @@ useEffect(()=>{
         })}
       </div>
       ) : (
-        <h1 className="loading">Loading...!</h1>
+        <div id="loading">
+          <div className="loading1"></div>
+          <div className="loading1"></div>
+          <div className="loading1"></div>
+          <div className="loading1"></div>
+          <div className="loading1"></div>
+          <div className="loading1"></div>
+        </div>
       )}
   </>)
 }
