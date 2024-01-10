@@ -59,9 +59,26 @@
       text-align: center;
     }
 
-    .sbt-update{
+    #sbtUpdate{
+      cursor: pointer;
+      background-color: white;
       padding: 10px 40px 10px 40px;
+      transition: all .3s ease-out;
+    }
+    #sbtUpdate:hover{
+      background-color: rgb(3, 154, 255);
+    }
+    #ResetClick{
+      padding: 10px 40px 10px 40px;
+      cursor: pointer;
+      background-color: white;
+      font-style: none;
+      transition: all .3s ease-out;
+    }
+    #ResetClick:hover{
+      background-color: rgb(3, 154, 255);
     }
     
   }
 }
+

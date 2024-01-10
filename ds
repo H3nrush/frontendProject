@@ -1,7 +1,0 @@
-        <Route path='/' element={<HomePage />} />
-        <Route path='/Movies' element={<MoviesPage />} />
-        <Route path='/Movie' element={<MoviesDetails />} />
-        <Route path='/Series' element={<SeriesPage />} />
-        <Route path='/Serie' element={<SeriesDetails />} />
-        <Route path='/Login' element={<Login />} />
-        <Route path='/CreateMovie' element={<AdminMoviesCreate />} />

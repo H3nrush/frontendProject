@@ -68,6 +68,25 @@
   text-align: center;
 }
 
-.user-UpdateUser .form-updateUser .sbt-update {
+.user-UpdateUser .form-updateUser #sbtUpdate {
+  cursor: pointer;
+  background-color: white;
   padding: 10px 40px 10px 40px;
+  transition: all .3s ease-out;
+}
+
+.user-UpdateUser .form-updateUser #sbtUpdate:hover {
+  background-color: #039aff;
+}
+
+.user-UpdateUser .form-updateUser #ResetClick {
+  padding: 10px 40px 10px 40px;
+  cursor: pointer;
+  background-color: white;
+  font-style: none;
+  transition: all .3s ease-out;
+}
+
+.user-UpdateUser .form-updateUser #ResetClick:hover {
+  background-color: #039aff;
 }
