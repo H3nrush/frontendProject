@@ -16,6 +16,10 @@ import Horror from './pages/guest/genres/Horror';
 import Mystry from './pages/guest/genres/Mystry';
 import ScienceFiction from './pages/guest/genres/ScienceFiction';
 import UpdateUser from './pages/guest/profile/update';
+import MoviesPage from './pages/admin/MoviesPage';
+import AdminMoviesCreate from './pages/admin/AdminMoviesCreate';
+import FeedBacks from './pages/admin/FeedBacks';
+import EditeMovies from './pages/admin/AdminMoviesCreate';
 
 function App() {
   return (
@@ -23,6 +27,10 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/Login' element={<Login />} />
+        <Route path='/CreateMovies' element={<AdminMoviesCreate />} />
+        <Route path='/Movies/Admin/EditeMovies' element={<EditeMovies />} />
+        <Route path='/FeedBacks' element={<FeedBacks />} />
+        <Route path='/EditMovies' element={<MoviesPage />} />
         <Route path='/MyProfile' element={<Profile />}/>
         <Route path='/CreateAccount' element={<CreateAccount />} />
         <Route path='/Movie/Details/:id' element={<MoviesDetails />} />

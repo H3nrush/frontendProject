@@ -7,15 +7,33 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  grid-gap: 40px;
+  grid-gap: 30px;
   .divGenreMovies{
     text-align: center;
-    img{
-      height: 460px;
+    .img-div-genre{
+      img{
+        height: 460px;
+        transition: all .3s;
+      }
+      img:hover{
+        opacity: .2;
+      }
+      background-image: url("https://img.icons8.com/neon/96/039AFF/play.png");
+      background-size: 90%;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: all .3s;
+    }
+    .img-div-genre:hover{
+      background-image: url("https://img.icons8.com/neon/96/039AFF/play.png");
+      background-size: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
     }
     p{
       margin-top: 10px;
       font-size: 20px;
     }
+
   }
 }

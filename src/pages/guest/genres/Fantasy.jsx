@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Header from "../../../components/guest/Header";
+import Header from "../../../components/Header";
 import { Link, useNavigate } from "react-router-dom";
 function Fantasy(){
   const navigat = useNavigate();
@@ -40,7 +40,7 @@ function Fantasy(){
             <>
             {movies.moviesGenre.includes(`Fantasy`)  && (
              <div className="divGenreMovies">
-             <Link to={`/Movie/Details/${movies.id}`}><img src={movies.moviesPoster} alt={movies.moviesName} /></Link>
+             <Link to={`/Movie/Details/${movies.id}`}><div className="img-div-genre"><img src={movies.moviesPoster} alt={movies.moviesName} /></div></Link>
               <p>{movies.moviesName}</p>
              </div>
             )}

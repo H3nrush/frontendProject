@@ -1,7 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import './style/style.css';
-import Header from "../../../components/guest/Header";
+import Header from "../../../components/Header";
 import { Link } from "react-router-dom";
 function Profile(){
   const [userInfo , setUserInfo] = useState('');

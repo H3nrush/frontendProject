@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import Header from "../../components/guest/Header";
+import Header from "../../components/Header";
+import './style/MoviesPage/style.css'
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 function MoviesPage(){
   const navigat = useNavigate();
   const [Movies , setMovies] = useState(null);
+  const [isAdmin , setIsAdmin] = useState('');
 
   useEffect(()=>{
     (async () =>{
@@ -27,26 +30,32 @@ function MoviesPage(){
       },2000)
     }
 
-  },[navigat]);
+    setIsAdmin(jwtDecode(token))
+    if(isAdmin.RoleId !== 1){
+      navigat('/')
+    }
+
+  },[navigat,isAdmin]);
 
   return(
     <>
     <Header />
     {isUser ? (
       <>
-      Movies page
-      <h1>List Of the Movies:</h1>
       {Movies ? (
       <>
+      <div id="allMoviesEdit">
         {Movies.map((movies)=>{
           return(
-            <>
-            {movies.moviesGenre.includes(`Action`)  && (
-              <p>{movies.moviesName}</p>
-            )}
-            </>
+              
+                <div className="eachMoviesEdit">
+                  <div><img src={movies.moviesPoster} alt={movies.moviesName} /></div>
+                  <p>{movies.moviesName}</p>
+                </div>
+              
           );
         })}
+        </div>
       </>
       ) : (
         <p>Loading...!</p>

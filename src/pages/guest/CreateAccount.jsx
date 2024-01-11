@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import './style/signup/style.css';
-import Header from "../../components/guest/Header";
+import Header from "../../components/Header";
 
 function CreateAccount(){
 

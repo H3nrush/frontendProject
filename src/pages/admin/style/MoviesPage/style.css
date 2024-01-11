@@ -1,0 +1,46 @@
+#allMoviesEdit {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 10vh;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding: 20px;
+  flex-wrap: wrap;
+  grid-gap: 80px;
+}
+
+#allMoviesEdit .eachMoviesEdit {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#allMoviesEdit .eachMoviesEdit img {
+  height: 300px;
+  transition: all .3s ease-in;
+}
+
+#allMoviesEdit .eachMoviesEdit img:hover {
+  opacity: .3;
+}
+
+#allMoviesEdit .eachMoviesEdit div {
+  cursor: pointer;
+  background-image: url("https://img.icons8.com/sf-black/64/039aff/create-new.png");
+  background-size: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all .3s ease-in;
+}
+
+#allMoviesEdit .eachMoviesEdit div:hover {
+  background-image: url("https://img.icons8.com/sf-black/64/039aff/create-new.png");
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}

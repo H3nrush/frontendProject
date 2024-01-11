@@ -1,10 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import './style/style.css';
-import './style/styleForBtn.css';
-import './style/styleForGenre.css';
+import './style/Header/style.css';
+import './style/Theme/themeModes.css';
+import './style/Handlers/styleHandlers.css';
+import { jwtDecode } from "jwt-decode";
 
 function Header() {
+const [isAdmin , setIsAdmin] = useState('');
+const token = localStorage.getItem('jwt')
+
+useEffect(()=>{
+  setIsAdmin(jwtDecode(token))
+},[token])
+
+
   const setTheme = (isDarkMode) => {
     const body = document.querySelector("*");
     const divLabel = document.querySelector(".label");
@@ -78,11 +87,42 @@ const navigate = useNavigate();
     }
   }
 
+  const handleAdminDisplay = () => {
+    let canToDo = document.querySelector(".toDo");
+  
+    if (canToDo.style.display === "none" || canToDo.style.display === "") {
+      canToDo.style.display = "flex";
+      canToDo.style.animationName = "adminBox";
+    } else {
+      canToDo.style.animationName = "adminBoxClose";
+      setTimeout(()=>{
+        canToDo.style = "display:none";
+      },250)
+    }
+  };
+  
   return (
     <header className="guestHeader">
       <nav>
         <ul>
           <li><Link to='/' className="links">Home</Link></li>
+
+              {isAdmin.RoleId === 1 &&(
+                          <>
+                                      {/* admin can to do */}
+                    <li><div className="headerAdmin" onClick={handleAdminDisplay}><p>Admin</p></div></li>
+                    <div className="toDo">
+                      
+                      {/* this is only for super admin */}
+                      <Link to="/EditMovies" className="div"><div>Edite Movies</div></Link>
+                      <Link to="/CreateMovies" className="div"><div>Post New Movies</div></Link>
+                      <Link to="/FeedBack" className="div"><div>Feed Backs</div></Link>
+
+                    </div>
+                    {/*  */}
+                          </>
+              )}
+
           <li>
             <div className="links" onClick={handleGenreDisplay}>Genres</div>
           </li>

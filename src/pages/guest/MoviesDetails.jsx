@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Header from "../../components/guest/Header";
+import Header from "../../components/Header";
 import './style/movieDetails/style.css';
 import Reply from "./Reply";
 import AllReply from "./AllReply";
