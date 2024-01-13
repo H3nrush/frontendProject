@@ -19,7 +19,7 @@ import UpdateUser from './pages/guest/profile/update';
 import MoviesPage from './pages/admin/MoviesPage';
 import AdminMoviesCreate from './pages/admin/AdminMoviesCreate';
 import FeedBacks from './pages/admin/FeedBacks';
-import EditeMovies from './pages/admin/AdminMoviesCreate';
+import EditeMovies from './pages/admin/EditeMovies';
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/Login' element={<Login />} />
         <Route path='/CreateMovies' element={<AdminMoviesCreate />} />
-        <Route path='/Movies/Admin/EditeMovies' element={<EditeMovies />} />
+        <Route path='/EditMovies/EditeMovie/:id' element={<EditeMovies />} />
         <Route path='/FeedBacks' element={<FeedBacks />} />
         <Route path='/EditMovies' element={<MoviesPage />} />
         <Route path='/MyProfile' element={<Profile />}/>

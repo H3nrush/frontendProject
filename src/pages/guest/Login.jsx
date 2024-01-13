@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './style/login/style.css';
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 
+
 function Login(){
   const navigate = useNavigate();
   const [message , setMessage] = useState(null);
+  const token = localStorage.getItem('jwt');
+
+  useEffect(()=>{
+    if(token){
+      navigate('/')
+    }
+  },[token,navigate])
+  
+  
+
+
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -27,15 +39,18 @@ function Login(){
 
     const loginDataResponse = await loginResponse.json();
     const token = loginDataResponse.data;
+    console.log(token)
     if(token){
-      localStorage.setItem("jwt" , token);
       setTimeout(function() {
+        localStorage.setItem("jwt" , token);
         navigate("/")
       }, 1500);
       setMessage("Welcome Dear User ;)")
     } else {
-      if(!username || !password){
-        setMessage("Please enter your user information!")
+      if(!username){
+        setMessage("Please enter your username!")
+      }else if(!password){
+        setMessage("Please enter your password!")
       }else{
         setMessage("username or password is invalid! :(")
       }

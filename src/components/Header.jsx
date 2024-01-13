@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './style/Header/style.css';
 import './style/Theme/themeModes.css';
 import './style/Handlers/styleHandlers.css';
@@ -10,7 +10,9 @@ const [isAdmin , setIsAdmin] = useState('');
 const token = localStorage.getItem('jwt')
 
 useEffect(()=>{
-  setIsAdmin(jwtDecode(token))
+  if(token){
+    setIsAdmin(jwtDecode(token))
+  }
 },[token])
 
 
@@ -49,10 +51,13 @@ useEffect(()=>{
       setTheme(JSON.parse(storedTheme));
     }
   }, []);
-const navigate = useNavigate();
+
   const handleLogout = () => {
-    localStorage.removeItem('jwt');
-    navigate("/")
+    const token = localStorage.getItem('jwt')
+    if(token){
+      localStorage.removeItem('jwt');
+    }
+    window.location.reload();
   };
 
   const handleDisplay = ()=> {
@@ -107,7 +112,7 @@ const navigate = useNavigate();
         <ul>
           <li><Link to='/' className="links">Home</Link></li>
 
-              {isAdmin.RoleId === 1 &&(
+              {isAdmin.RoleId === 2 &&(
                           <>
                                       {/* admin can to do */}
                     <li><div className="headerAdmin" onClick={handleAdminDisplay}><p>Admin</p></div></li>
@@ -116,7 +121,7 @@ const navigate = useNavigate();
                       {/* this is only for super admin */}
                       <Link to="/EditMovies" className="div"><div>Edite Movies</div></Link>
                       <Link to="/CreateMovies" className="div"><div>Post New Movies</div></Link>
-                      <Link to="/FeedBack" className="div"><div>Feed Backs</div></Link>
+                      {/* <Link to="/FeedBack" className="div"><div>Feed Backs</div></Link> */}
 
                     </div>
                     {/*  */}

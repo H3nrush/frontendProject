@@ -1,26 +1,35 @@
 import { useEffect, useState } from 'react';
-import './style/AdminMoviesCreate/style.css'
+import './style/AdminMoviesCreate/style.css';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 
 const AdminMoviesCreate = () => {
-  const [message , setMessage] = useState(null);
-  const [isAdmin , setIsAdmin] = useState('')
+  const [message, setMessage] = useState(null);
   const action = document.querySelectorAll('.Genre');
-  const token = localStorage.getItem('jwt')
+  const token = localStorage.getItem('jwt');
   const navigate = useNavigate();
 
-  useEffect(()=>{
-    setIsAdmin(jwtDecode(token).RoleId)
-    if(isAdmin === 1){
-      setMessage("Hi dear Admin :) Here you can post new Movies please dont forget to full all the text areas !")
-    }else{
-      setMessage('redirect to homepage :(')
-    }
-  },[token,isAdmin])
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const decodedToken = await jwtDecode(token);
+        if (decodedToken.RoleId === 2) {
+          setMessage("Hi dear Admin :) Here you can post new Movies please don't forget to fill all the text areas!");
+        } else {
+          setMessage('Redirect to homepage :(');
+          setTimeout(() => {
+            navigate('/');
+          },500);
+        }
+      } catch (error) {
+        console.error('Error decoding token:', error);
+      }
+    };
 
-  
-console.log(isAdmin)
+    if (token) {
+      fetchData();
+    }
+  }, [token, navigate]);
 
   const dataOfGenre = () => {
     return Array.from(action).map((genre) => {
@@ -72,7 +81,6 @@ console.log(isAdmin)
     };
 
     const postDataJson = JSON.stringify(postData);
-    const token = localStorage.getItem('jwt')
     const postRes = await fetch("http://localhost:8080/api/Movies", {
       method: "POST",
       headers: {
@@ -83,10 +91,10 @@ console.log(isAdmin)
     });
 
     const postDataResponse = await postRes.json();
-    if(postDataResponse){
-      setMessage("New movie informations saved successfull!")
-    }else{
-      setMessage("server lost ! please try again ! :(")
+    if (postDataResponse) {
+      setMessage("New movie information saved successfully!");
+    } else {
+      setMessage("Server error! Please try again! :(");
     }
   };
 
@@ -149,7 +157,6 @@ console.log(isAdmin)
               </div>
             <div><input type="submit" value="Save" className='save-class-name'/></div>
           </form>
-
       </div>
     </>
   )

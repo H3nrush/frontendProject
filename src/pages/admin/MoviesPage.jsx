@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import './style/MoviesPage/style.css'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
 function MoviesPage(){
@@ -30,8 +30,8 @@ function MoviesPage(){
       },2000)
     }
 
-    setIsAdmin(jwtDecode(token))
-    if(isAdmin.RoleId !== 1){
+    setIsAdmin(jwtDecode(token).RoleId)
+    if(isAdmin === 3 || isAdmin === 1){
       navigat('/')
     }
 
@@ -48,8 +48,8 @@ function MoviesPage(){
         {Movies.map((movies)=>{
           return(
               
-                <div className="eachMoviesEdit">
-                  <div><img src={movies.moviesPoster} alt={movies.moviesName} /></div>
+                <div className="eachMoviesEdit" key={movies.id}>
+                  <Link to={`/EditMovies/EditeMovie/${movies.id}`} ><div><img src={movies.moviesPoster} alt={movies.moviesName} /></div></Link>
                   <p>{movies.moviesName}</p>
                 </div>
               
