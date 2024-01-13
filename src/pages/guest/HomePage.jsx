@@ -3,9 +3,16 @@ import Header from "../../components/Header";
 import './style/homePage/style.css';
 import './style/homePage/loading/style.css'
 import { Link, useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 function HomePage(){
   const [Movies , setMovies] = useState(null);
+  const [isNormalUser , setIsNormalUser] = useState();
+  const token = localStorage.getItem('jwt')
+  
+  useEffect(()=>{
+    setIsNormalUser(jwtDecode(token).RoleId)
+  },[token])
 
   useEffect(()=>{
     (async () =>{
@@ -36,8 +43,10 @@ useEffect(()=>{
             {isUser ? (<div><Link to={`/Movie/Details/${movie.id}`}><img src={movie.moviesPoster} alt={movie.moviesName}/></Link></div>) : (<div><Link to="/Login"><img src={movie.moviesPoster} alt={movie.moviesName}/></Link></div>)}
               <p>{movie.moviesName}</p>
             </div>
+            
           );
         })}
+        <footer className="footer"><a href="#">Return</a><p>Copyright is Safe</p><Link to="/Users/FeedBacks">FeedBack</Link></footer>
       </div>
       ) : (
         <div id="loading">

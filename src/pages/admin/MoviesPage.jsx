@@ -37,6 +37,38 @@ function MoviesPage(){
 
   },[navigat,isAdmin]);
 
+  const handleDeleteMovie = async(movieId,movieName)=>{
+    const token = localStorage.getItem('jwt')
+    const roleId = await jwtDecode(token);
+    if(!roleId.RoleId === 2){
+      return navigat('/')
+    }
+    const adminConfirm = window.confirm(`are you sure that you wanna delete this movie ( ${movieName} ) ?`)
+    if(adminConfirm){
+
+      try {
+        const response = await fetch(`http://localhost:8080/api/Movies/${movieId}`, {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+  
+        if (response.ok) {
+          // Update the state to remove the deleted movie
+          setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== movieId));
+          alert('movie is deleted :( ')
+        } else {
+          console.error('Failed to delete the movie.');
+        }
+      } catch (error) {
+        console.error('Error occurred during movie deletion:', error);
+      }
+
+    }
+  }
+
+
   return(
     <>
     <Header />
@@ -49,8 +81,12 @@ function MoviesPage(){
           return(
               
                 <div className="eachMoviesEdit" key={movies.id}>
-                  <Link to={`/EditMovies/EditeMovie/${movies.id}`} ><div><img src={movies.moviesPoster} alt={movies.moviesName} /></div></Link>
+                  <div><img src={movies.moviesPoster} alt={movies.moviesName} /></div>
                   <p>{movies.moviesName}</p>
+                  <div className="eachMovieBTN">
+                  <Link to={`/EditMovies/EditeMovie/${movies.id}`} ><button className="btnEdite">edite</button></Link>
+                  <button className="btnDelete" onClick={() => handleDeleteMovie(movies.id,movies.moviesName)}>delete</button>
+                  </div>
                 </div>
               
           );

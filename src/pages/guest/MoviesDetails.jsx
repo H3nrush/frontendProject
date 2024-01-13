@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import './style/movieDetails/style.css';
@@ -7,8 +7,17 @@ import AllReply from "./AllReply";
 
 const MovieDetails = () => {
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const [movies, setMovies] = useState(null);
+  const token = localStorage.getItem('jwt');
+
+ useEffect(()=>{
+  if(!token){
+    navigate('/Login');
+    return
+  }
+ })
+
 
   useEffect(() => {
     (async () => {

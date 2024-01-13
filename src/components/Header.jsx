@@ -25,7 +25,7 @@ useEffect(()=>{
       body.style.color = "white";
       divLabel.style = "background-color:#111111;  background-image: url('https://img.icons8.com/external-flat-papa-vector/78/external-Light-Mode-interface-flat-papa-vector.png');";
     } else {
-      body.style.backgroundColor = "white";
+      body.style.backgroundColor = "lightblue";
       body.style.color = "black";
       divLabel.style = "background-color:white; background-image: url('https://img.icons8.com/ios-glyphs/60/moon-symbol.png');";
     }

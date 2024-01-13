@@ -1,15 +1,26 @@
 import { useEffect, useState } from 'react';
 import './style/reply/allReply/style.css';
 import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 
 function AllReply(props) {
   const [allMoviesReply, setAllMoviesReply] = useState([]);
+  const [ownReplyUser , setOwnReplyUser] = useState([]);
   const [ownUser , setOwnUser] = useState();
+  const navigat = useNavigate();
+
+
   const token = localStorage.getItem('jwt')
+  if(!token){
+    navigat('/Login');
+  }
+
+  
+
   useEffect(()=>{
-    setOwnUser(jwtDecode(token).id)
+    setOwnUser(jwtDecode(token))
   },[token])
- 
+
   useEffect(() => {
     const fetchReviews = async () => {
       try {
@@ -52,15 +63,32 @@ function AllReply(props) {
     }
   };
   
+  
+  useEffect(()=>{
+    (async () =>{
+      const usersRespond = await fetch("http://localhost:8080/api/users");
+
+      const usersRespondData = await usersRespond.json();
+      setOwnReplyUser(usersRespondData);
+    })();
+  },[]);
+
+
 
   return (
     <>
       <div className='for-allComments'>
         {allMoviesReply.map((reply) => (
           <div key={reply.id} className='for-eachComment'>
+          <div>
+          {ownReplyUser.map((user)=>(
+            <h3>{user.id === reply.UserId && user.username}</h3>
+          ))}
+          <br/>
             <p>{reply.content}</p>
+            </div>
 
-      {ownUser === reply.UserId && (<div className='delete-reply' onClick={() => handleDelete(reply.id)}>Delete</div>)}
+            {ownUser.id === reply.UserId || ownUser.RoleId === 1 ? (<div className='delete-reply' onClick={() => handleDelete(reply.id)}>Delete</div>):(null)}
 
 
           </div>

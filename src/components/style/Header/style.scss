@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: flex-end;
     position: relative;
-    background-color: rgba(0,0,0,0.3);
+    background-color: #111111;
     ul{
       width: 400px;
       height: 100%;
@@ -26,6 +26,7 @@
         .links{
           height: 10vh;
           width: 10vh;
+          border-radius: 35px;
           text-decoration: none;
           color: rgb(3, 154, 255);
           font: bolder;
@@ -33,7 +34,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 1px rgba(255, 246, 246, 0.036) groove;
+
           cursor: pointer;
           user-select: none;
           transition: all 0.2s ease-in-out;

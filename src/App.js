@@ -29,7 +29,7 @@ function App() {
         <Route path='/Login' element={<Login />} />
         <Route path='/CreateMovies' element={<AdminMoviesCreate />} />
         <Route path='/EditMovies/EditeMovie/:id' element={<EditeMovies />} />
-        <Route path='/FeedBacks' element={<FeedBacks />} />
+        <Route path='/Users/FeedBacks' element={<FeedBacks />} />
         <Route path='/EditMovies' element={<MoviesPage />} />
         <Route path='/MyProfile' element={<Profile />}/>
         <Route path='/CreateAccount' element={<CreateAccount />} />

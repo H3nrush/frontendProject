@@ -3,9 +3,12 @@ import './style/reply/style.css';
 import { useNavigate } from "react-router-dom";
 
 function Reply(props){
+
   const navigat = useNavigate();
   const [Reply , setReply] = useState();
 
+
+  
   const handleReply = async (event) =>{
     event.preventDefault();
 const token = localStorage.getItem('jwt');
@@ -42,6 +45,10 @@ if(event.target.reply.value === ""){
       setReply("server connection is lost!")
     }
   }
+
+
+
+
   return (
     <>
       <div className="comments">

@@ -4,6 +4,9 @@ import { useParams } from "react-router-dom";
 
 function EditeMovies(){
   const [movies , setMovies] = useState(null);
+  const [massage , setMessage]= useState('');
+  const action = document.querySelectorAll('.Genre');
+  const token = localStorage.getItem('jwt')
 
   const { id } = useParams();
   useEffect(() => {
@@ -14,13 +17,73 @@ function EditeMovies(){
       setMovies(moviesResponseData);
     })();
   }, [id]);
+
+
+  const dataOfGenre = () => {
+    return Array.from(action).map((genre) => {
+      if (genre.checked) {
+        return genre.value;
+      }
+      return null;
+    }).filter(Boolean);
+  };
+
+  const handlePutMovie = async (event) => {
+    event.preventDefault();
+
+    const moviesName = event.target.movieName.value;
+    const moviesUrl = event.target.movieUrl.value;
+    const moviesPoster = event.target.moviePoster.value;
+    const moviesInfo = event.target.movieInfo.value;
+    const moviesArtits = event.target.movieArtists.value;
+    const moviesCountry = event.target.movieCountry.value;
+    const isSubtitled = event.target.isSubtitled.checked;
+    const dateOfEcran = event.target.dateOfEcran.value;
+    const moviesLanguege = event.target.movieLangauge.value;
+    const moviesGenre = dataOfGenre(); // Call the function to get the selected genres
+    const imdb = event.target.imdb.value;
+
+    const putData = {
+      moviesName,
+      moviesUrl,
+      moviesPoster,
+      moviesInfo,
+      moviesArtits,
+      moviesCountry,
+      isSubtitled,
+      dateOfEcran,
+      moviesLanguege,
+      moviesGenre,
+      imdb,
+    };
+
+    const putDataJson = JSON.stringify(putData);
+    const putRes = await fetch(`http://localhost:8080/api/Movies/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+      body: putDataJson,
+    });
+
+    const putDataResponse = await putRes.json();
+    if (putDataResponse) {
+      setMessage("New movie information saved successfully!");
+      window.location.reload();
+    } else {
+      setMessage("Server error! Please try again! :(");
+    }
+  };
+
+
   
   return(
     <>
     {movies ? (
       <div id="post-movies">
         
-        <form >
+        <form onSubmit={handlePutMovie}>
           <label className='font-blue'>
           <h1>{movies.data.moviesName}</h1>
           <br/>
@@ -88,6 +151,7 @@ function EditeMovies(){
               </div>
             </div>
           <div><input type="submit" value="Save" className='save-class-name'/></div>
+          <p color="red">{massage && (massage)}</p>
         </form>
     </div>
     ):(

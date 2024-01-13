@@ -10,3 +10,19 @@
   height: 0;
   width: 0;
 }
+.btnlight{
+
+}
+.color-light{
+  background-color: #F9F7F0;
+}
+.color-light-blue{
+  background-color: #18B7BE;
+}
+.color-light-blue-near-dark{
+  background-color: #178CA4;
+}
+.color-dark-blue{
+  background-color: #072A40;
+}
+

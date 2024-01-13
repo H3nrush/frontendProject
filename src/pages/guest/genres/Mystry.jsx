@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../../../components/Header";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 function Mystry(){
-  const navigat = useNavigate();
   const [Movies , setMovies] = useState(null);
 
   useEffect(()=>{
@@ -13,25 +12,12 @@ function Mystry(){
       setMovies(MoviesRespondData);
     })();
   },[]);
-  const [isUser , setIsUser] = useState(false);
 
-  useEffect(()=>{
-    const token = localStorage.getItem('jwt');
-    if(token){
-      setIsUser(true)
-    }
-    if(!token){
-      setTimeout(function(){
-        navigat("/Login")
-      },2000)
-    }
 
-  },[navigat]);
 
   return(
     <>
     <Header />
-    {isUser ? (
       <div className="divGenre">
       {Movies ? (
       <>
@@ -39,8 +25,11 @@ function Mystry(){
           return(
             <>
             {movies.moviesGenre.includes(`Mystery`)  && (
-             <div className="divGenreMovies">
-             <Link to={`/Movie/Details/${movies.id}`}><div className="img-div-genre"><img src={movies.moviesPoster} alt={movies.moviesName} /></div></Link>
+            
+                <div className="divGenreMovies">
+            
+              <Link to={`/Movie/Details/${movies.id}`}><div className="img-div-genre"><img src={movies.moviesPoster} alt={movies.moviesName} /></div></Link>
+            
               <p>{movies.moviesName}</p>
              </div>
             )}
@@ -52,9 +41,6 @@ function Mystry(){
         <p>Loading...!</p>
       )}
       </div>
-      ):(
-        <div className="divGenre"><h1>Please Login .. !</h1></div>
-      )}
     </>
   )
 }
