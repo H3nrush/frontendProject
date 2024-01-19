@@ -20,6 +20,8 @@ import MoviesPage from './pages/admin/MoviesPage';
 import AdminMoviesCreate from './pages/admin/AdminMoviesCreate';
 import FeedBacks from './pages/admin/FeedBacks';
 import EditeMovies from './pages/admin/EditeMovies';
+import AdminAllUsers from './pages/admin/AdminAllUsers';
+import AdminEachUser from './pages/admin/AdminEachUser';
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/Login' element={<Login />} />
         <Route path='/CreateMovies' element={<AdminMoviesCreate />} />
+        <Route path='/Admin/AllUsers' element={<AdminAllUsers />} />
+        <Route path='/Admin/AllUsers/:id' element={<AdminEachUser /> } /> 
         <Route path='/EditMovies/EditeMovie/:id' element={<EditeMovies />} />
         <Route path='/Users/FeedBacks' element={<FeedBacks />} />
         <Route path='/EditMovies' element={<MoviesPage />} />

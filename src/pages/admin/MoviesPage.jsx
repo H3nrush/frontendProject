@@ -31,7 +31,7 @@ function MoviesPage(){
     }
 
     setIsAdmin(jwtDecode(token).RoleId)
-    if(isAdmin === 3 || isAdmin === 1){
+    if(isAdmin === 3){
       navigat('/')
     }
 
@@ -81,11 +81,11 @@ function MoviesPage(){
           return(
               
                 <div className="eachMoviesEdit" key={movies.id}>
-                  <div><img src={movies.moviesPoster} alt={movies.moviesName} /></div>
-                  <p>{movies.moviesName}</p>
-                  <div className="eachMovieBTN">
-                  <Link to={`/EditMovies/EditeMovie/${movies.id}`} ><button className="btnEdite">edite</button></Link>
-                  <button className="btnDelete" onClick={() => handleDeleteMovie(movies.id,movies.moviesName)}>delete</button>
+<div><img src={movies.moviesPoster} alt={movies.moviesName} /></div>
+<p>{movies.moviesName}</p>
+<div className="eachMovieBTN">
+<Link to={`/EditMovies/EditeMovie/${movies.id}`} ><button className="btnEdite">edite</button></Link>
+<button className="btnDelete" onClick={() => handleDeleteMovie(movies.id,movies.moviesName)}>delete</button>
                   </div>
                 </div>
               

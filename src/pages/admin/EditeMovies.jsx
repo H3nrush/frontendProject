@@ -1,14 +1,25 @@
 
+import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function EditeMovies(){
   const [movies , setMovies] = useState(null);
   const [massage , setMessage]= useState('');
+  const [isAdmin , setIsAdmin] = useState([]);
   const action = document.querySelectorAll('.Genre');
   const token = localStorage.getItem('jwt')
-
   const { id } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    setIsAdmin(jwtDecode(token).RoleId)
+    if(isAdmin === 3){
+      return navigate('/');
+    }
+  },[token,navigate,isAdmin])
+
+
   useEffect(() => {
     (async () => {
       const moviesResponse = await fetch(`http://localhost:8080/api/Movies/${id}`);

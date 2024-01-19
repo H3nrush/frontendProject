@@ -81,8 +81,11 @@ function AllReply(props) {
         {allMoviesReply.map((reply) => (
           <div key={reply.id} className='for-eachComment'>
           <div>
+          <p className='replyCreatedAt'>at: {new Date(reply.createdAt).toLocaleTimeString()}</p>
           {ownReplyUser.map((user)=>(
-            <h3>{user.id === reply.UserId && user.username}</h3>
+            <>
+            <p>{user.id === reply.UserId && user.username}</p>
+            </>
           ))}
           <br/>
             <p>{reply.content}</p>

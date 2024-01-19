@@ -1,13 +1,15 @@
 .divGenre {
   height: auto;
   width: 100vw;
-  padding: 100px;
+  padding: 50px;
   position: absolute;
   top: 10vh;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   flex-direction: row;
-  grid-gap: 30px;
+  grid-gap: 10px;
 }
 
 .divGenre .divGenreMovies {
@@ -23,7 +25,7 @@
 }
 
 .divGenre .divGenreMovies .img-div-genre img {
-  height: 460px;
+  height: 260px;
   transition: all .3s;
 }
 
@@ -40,5 +42,19 @@
 
 .divGenre .divGenreMovies p {
   margin-top: 10px;
-  font-size: 20px;
+  font-size: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .divGenre {
+    padding: 10px;
+    grid-gap: 10px;
+  }
+  .divGenre .divGenreMovies .img-div-genre img {
+    height: 150px;
+  }
+  .divGenre .divGenreMovies p {
+    margin-top: 10px;
+    font-size: 9px;
+  }
 }

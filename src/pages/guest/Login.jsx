@@ -39,7 +39,7 @@ function Login(){
 
     const loginDataResponse = await loginResponse.json();
     const token = loginDataResponse.data;
-    console.log(token)
+  
     if(token){
       setTimeout(function() {
         localStorage.setItem("jwt" , token);

@@ -13,7 +13,7 @@ const AdminMoviesCreate = () => {
     const fetchData = async () => {
       try {
         const decodedToken = await jwtDecode(token);
-        if (decodedToken.RoleId === 2) {
+        if (decodedToken.RoleId === 2 || decodedToken.RoleId === 1) {
           setMessage("Hi dear Admin :) Here you can post new Movies please don't forget to fill all the text areas!");
         } else {
           setMessage('Redirect to homepage :(');

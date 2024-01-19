@@ -23,3 +23,8 @@
   font-size: 0.8vw;
   cursor: pointer;
 }
+
+.replyCreatedAt {
+  font-size: 10px;
+  opacity: 0.5;
+}

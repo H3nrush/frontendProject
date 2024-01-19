@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import './style/Header/style.css';
 import './style/Theme/themeModes.css';
-import './style/Handlers/styleHandlers.css';
 import { jwtDecode } from "jwt-decode";
 
 function Header() {
 const [isAdmin , setIsAdmin] = useState('');
-const token = localStorage.getItem('jwt')
+const token = localStorage.getItem('jwt');
+const [isUser, setIsUser] = useState(false);
 
 useEffect(()=>{
   if(token){
@@ -37,7 +37,7 @@ useEffect(()=>{
     localStorage.setItem('isDarkMode', JSON.stringify(!isDarkMode));
   };
 
-  const [isUser, setIsUser] = useState(false);
+
 
   useEffect(() => {
     const token = localStorage.getItem('jwt');
@@ -53,10 +53,7 @@ useEffect(()=>{
   }, []);
 
   const handleLogout = () => {
-    const token = localStorage.getItem('jwt')
-    if(token){
       localStorage.removeItem('jwt');
-    }
     window.location.reload();
   };
 
@@ -112,10 +109,10 @@ useEffect(()=>{
         <ul>
           <li><Link to='/' className="links">Home</Link></li>
 
-              {isAdmin.RoleId === 2 &&(
-                          <>
+              {isAdmin.RoleId === 2 || isAdmin.RoleId === 1 ?(
+                    <>
                                       {/* admin can to do */}
-                    <li><div className="headerAdmin" onClick={handleAdminDisplay}><p>Admin</p></div></li>
+                    <li><div className="headerAdmin" onClick={handleAdminDisplay}>Admin</div></li>
                     <div className="toDo">
                       
                       {/* this is only for super admin */}
@@ -124,8 +121,10 @@ useEffect(()=>{
                       {/* <Link to="/FeedBack" className="div"><div>Feed Backs</div></Link> */}
 
                     </div>
-                    {/*  */}
-                          </>
+                    </>
+              ):(<></>)}
+              {isAdmin.RoleId === 1 &&(
+                <Link to="/Admin/AllUsers/" className="UsersBTN"><div className="headerAdmin">Users</div></Link>
               )}
 
           <li>
@@ -147,7 +146,7 @@ useEffect(()=>{
           </div>
 
           {isUser ? (
-            <li><Link className="links" onClick={handleDisplay}><img src="https://img.icons8.com/ios-filled/50/039aff/user-male-circle.png" alt="user" /></Link></li>
+            <li><Link className="links" onClick={handleDisplay}><img src="https://img.icons8.com/ios-filled/40/039aff/user-male-circle.png" alt="user" /></Link></li>
           ) : (
             <li><Link to="/Login" className="links">Login</Link></li>
           )}

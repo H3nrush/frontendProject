@@ -3,16 +3,21 @@ import Header from "../../components/Header";
 import './style/homePage/style.css';
 import './style/homePage/loading/style.css'
 import { Link, useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
 
 function HomePage(){
   const [Movies , setMovies] = useState(null);
-  const [isNormalUser , setIsNormalUser] = useState();
   const token = localStorage.getItem('jwt')
-  
+  const [isUser , setIsUser] = useState(false);
+  const navigat = useNavigate();
+
+
   useEffect(()=>{
-    setIsNormalUser(jwtDecode(token).RoleId)
-  },[token])
+ 
+    if(token){
+      setIsUser(true)
+    }
+  },[navigat,token]);
+
 
   useEffect(()=>{
     (async () =>{
@@ -22,16 +27,8 @@ function HomePage(){
       setMovies(MoviesRespondData);
     })();
   },[]);
-  const [isUser , setIsUser] = useState(false);
-const navigat = useNavigate();
-useEffect(()=>{
-  const token = localStorage.getItem('jwt');
-  if(token){
-    setIsUser(true)
-  }
 
 
-},[navigat]);
 
   return(<>
         <Header />
@@ -46,7 +43,7 @@ useEffect(()=>{
             
           );
         })}
-        <footer className="footer"><a href="#">Return</a><p>Copyright is Safe</p><Link to="/Users/FeedBacks">FeedBack</Link></footer>
+        <footer className="footer"><Link href="/">Return</Link><p>Copyright is Safe</p><Link to="/Users/FeedBacks">FeedBack</Link></footer>
       </div>
       ) : (
         <div id="loading">

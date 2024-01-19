@@ -8,13 +8,17 @@ function FeedBacks(){
   const [messages , setMessages] = useState([]);
   const token = localStorage.getItem('jwt')
   const navigate = useNavigate();
-  console.log(isNormalUser)
+
+  useEffect(()=>{
+    if(!token){
+     return navigate('/Login')
+    }
+  },[token,navigate])
+
   useEffect(()=>{
     setIsNormalUser(jwtDecode(token))
-    if(!token){
-      navigate('/Login');
-    }  
-  },[token,navigate])
+  },[token])
+
 
 const handleSendFeedBack = async(event) =>{
   event.preventDefault();
@@ -68,18 +72,18 @@ useEffect(()=>{
 
       
       {messages.map((feedbacks) => {
-  if (feedbacks.name === isNormalUser.data) {
+         if (feedbacks.UserId === isNormalUser.id ) {
     return (
-      <div className='eachMassage' style={{ textAlign: 'end', color: 'red' }} key={feedbacks.id}>
-        <h3>name: {feedbacks.name}</h3>
+      <div className='eachMassage' style={{ textAlign: 'start', color: 'rgb(3, 154, 255)' }} key={feedbacks.id}>
+        <h3>username: {feedbacks.name}</h3>
         <h4>subject: {feedbacks.subject}</h4>
         <p>{feedbacks.text}</p>
       </div>
     );
-  } else if (feedbacks.UserId === isNormalUser.id) {
+  }else if (feedbacks.name === isNormalUser.data || isNormalUser.RoleId === 1) {
     return (
-      <div className='eachMassage' style={{ textAlign: 'start', color: 'black' }} key={feedbacks.id}>
-        <h3>name: {feedbacks.name}</h3>
+      <div className='eachMassage' style={{ textAlign: 'end', color: 'white' }} key={feedbacks.id}>
+        <h3>username: {feedbacks.name}</h3>
         <h4>subject: {feedbacks.subject}</h4>
         <p>{feedbacks.text}</p>
       </div>
@@ -98,13 +102,13 @@ useEffect(()=>{
           {isNormalUser.RoleId === 1 || isNormalUser.RoleId === 2 ? (<label><input className='userName' name='name' placeholder='Which User Do you wanna reply for?'/></label>):(<button className='userName'>{isNormalUser.data}</button>)}
 
           <label>
-              <input type="text" name="subject" className='messageSubject'/>
+              <input type="text" name="subject" className='messageSubject' placeholder='subject'/>
           </label>
 
           </div>
           <div>
           <label>
-              <textarea type="text" name="text" className='messageText'/>
+              <textarea type="text" name="text" className='messageText' placeholder='Text'/>
           </label>
 
           <input type='submit' value="Send" className='btnfeedback'/>

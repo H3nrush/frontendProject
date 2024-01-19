@@ -12,3 +12,11 @@
   background-image: url("https://img.icons8.com/ios-glyphs/60/moon-symbol.png");
   border: 1px black groove;
 }
+
+@media only screen and (max-width: 600px) {
+  .label {
+    height: 3vh;
+    width: 3vh;
+    top: calc(50% - 1.5vh);
+  }
+}

@@ -13,3 +13,16 @@
 }
 // https://img.icons8.com/external-flat-papa-vector/78/external-Light-Mode-interface-flat-papa-vector.png
 // https://img.icons8.com/ios-glyphs/60/moon-symbol.png
+
+
+
+
+
+
+@media only screen and (max-width: 600px){
+  .label{
+    height: 3vh;
+    width: 3vh;
+    top: calc(50% - 1.5vh);
+    }
+}
