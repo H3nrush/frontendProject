@@ -17,7 +17,7 @@ function AdminEachUser() {
       return navigate('/');
     }
     setIsAdmin(jwtDecode(token).RoleId);
-    if (isAdmin === 2 || isAdmin === 3) {
+    if (isAdmin === 2 || isAdmin === 3 || isAdmin === null) {
       return navigate('/');
     }
   }, [token, navigate, isAdmin]);
@@ -92,10 +92,11 @@ function AdminEachUser() {
           {user.RoleId === 1 && (<h3>Super Admin</h3>)}
           {user.RoleId === 2 && (<h3>Admin</h3>)}
           {user.RoleId === 3 && (<h3>User</h3>)}
+          {user.RoleId === null && (<h3>guest</h3>)}
 
           <label>
             Select Role: <br />
-            <select value={selectedRoleId} onChange={handleRoleChange}>
+            <select value={selectedRoleId} onChange={handleRoleChange} >
               <option value={1}>Super Admin</option>
               <option value={2}>Admin</option>
               <option value={3}>User</option>

@@ -4,48 +4,55 @@ import './style/homePage/style.css';
 import './style/homePage/loading/style.css'
 import { Link, useNavigate } from "react-router-dom";
 
-function HomePage(){
-  const [Movies , setMovies] = useState(null);
+function HomePage() {
+  const [Movies, setMovies] = useState(null);
   const token = localStorage.getItem('jwt')
-  const [isUser , setIsUser] = useState(false);
-  const navigat = useNavigate();
+  const [isUser, setIsUser] = useState(false);
+  const navigate = useNavigate();
 
-
-  useEffect(()=>{
- 
-    if(token){
-      setIsUser(true)
+  useEffect(() => {
+    // Check if the user is authenticated
+    if (token) {
+      setIsUser(true);
     }
-  },[navigat,token]);
+  }, [navigate, token]);
 
-
-  useEffect(()=>{
-    (async () =>{
-      const MoviesRespond = await fetch("http://localhost:8080/api/Movies");
-
-      const MoviesRespondData = await MoviesRespond.json();
-      setMovies(MoviesRespondData);
+  useEffect(() => {
+    // Fetch the list of movies from the API
+    (async () => {
+      const moviesResponse = await fetch("http://localhost:8080/api/Movies");
+      const moviesResponseData = await moviesResponse.json();
+      setMovies(moviesResponseData);
     })();
-  },[]);
+  }, []);
 
-
-
-  return(<>
-        <Header />
+  return (
+    <>
+      <Header />
       {Movies ? (
-      <div className="div-allMovies">
-        {Movies.map((movie)=>{
-          return(
+        // Display movies if available
+        <div className="div-allMovies">
+          {Movies.map((movie) => (
             <div className="movie-box" key={movie.id}>
-            {isUser ? (<div><Link to={`/Movie/Details/${movie.id}`}><img src={movie.moviesPoster} alt={movie.moviesName}/></Link></div>) : (<div><Link to="/Login"><img src={movie.moviesPoster} alt={movie.moviesName}/></Link></div>)}
+              {isUser ? (
+                // If user is authenticated, link to movie details page
+                <div><Link to={`/Movie/Details/${movie.id}`}><img src={movie.moviesPoster} alt={movie.moviesName} /></Link></div>
+              ) : (
+                // If user is not authenticated, link to login page
+                <div><Link to="/Login"><img src={movie.moviesPoster} alt={movie.moviesName} /></Link></div>
+              )}
               <p>{movie.moviesName}</p>
             </div>
-            
-          );
-        })}
-        <footer className="footer"><Link href="/">Return</Link><p>Copyright is Safe</p><Link to="/Users/FeedBacks">FeedBack</Link></footer>
-      </div>
+          ))}
+          {/* Footer with links */}
+          <footer className="footer">
+            <Link href="/">Return</Link>
+            <p>Copyright is Safe</p>
+            <Link to="/Users/FeedBacks">FeedBack</Link>
+          </footer>
+        </div>
       ) : (
+        // Display loading animation while fetching movies
         <div id="loading">
           <div className="loading1"></div>
           <div className="loading1"></div>
@@ -55,6 +62,8 @@ function HomePage(){
           <div className="loading1"></div>
         </div>
       )}
-  </>)
+    </>
+  )
 }
+
 export default HomePage;

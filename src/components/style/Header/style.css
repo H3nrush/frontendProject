@@ -298,4 +298,52 @@
   .toDo .div {
     font-size: 7px;
   }
+  @keyframes genreBox {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 5vh;
+    }
+  }
+  @keyframes genreBoxClose {
+    0% {
+      height: 5vh;
+    }
+    100% {
+      height: 0vh;
+    }
+  }
+  @keyframes adminBox {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 5vh;
+    }
+  }
+  @keyframes adminBoxClose {
+    0% {
+      height: 5vh;
+    }
+    100% {
+      height: 0vh;
+    }
+  }
+  @keyframes menu {
+    from {
+      height: 0;
+    }
+    to {
+      height: 5vh;
+    }
+  }
+  @keyframes menuClose {
+    from {
+      height: 5vh;
+    }
+    to {
+      height: 0;
+    }
+  }
 }

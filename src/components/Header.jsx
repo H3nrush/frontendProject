@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './style/Header/style.css';
 import './style/Theme/themeModes.css';
 import { jwtDecode } from "jwt-decode";
@@ -52,9 +52,13 @@ useEffect(()=>{
     }
   }, []);
 
+
+  const navigat = useNavigate();
   const handleLogout = () => {
+      navigat('/');
       localStorage.removeItem('jwt');
     window.location.reload();
+    return
   };
 
   const handleDisplay = ()=> {

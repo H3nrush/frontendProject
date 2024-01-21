@@ -9,6 +9,7 @@ function Profile() {
   const token = localStorage.getItem('jwt');
   const navigate = useNavigate();
 
+  // Fetch user info from token on component mount
   useEffect(() => {
     if (!token) {
       navigate('/');
@@ -16,6 +17,7 @@ function Profile() {
     setUserInfo(jwtDecode(token));
   }, [token, navigate]);
 
+  // Handle account deletion
   const handleDeleteAccount = async () => {
     const userId = userInfo.id; // Get user ID from userInfo
     const userConfirm = window.confirm(`Are you sure to delete your account?`);
@@ -31,6 +33,7 @@ function Profile() {
         });
 
         if (response.ok) {
+          // Remove the token from local storage after successful deletion
           localStorage.removeItem('jwt');
           navigate('/');
           // Optionally, you can redirect the user to another page after deletion
@@ -51,10 +54,15 @@ function Profile() {
       <div className="user-infos">
         <h1>{userInfo.data}</h1>
 
+        {/* Display user role and rating stars based on the role */}
         {userInfo.RoleId === 1 && <div>you are a super admin <br /> <div id="divStars"><span className="stars">&#9733;</span><span className="stars">&#9733;</span><span className="stars">&#9733;</span></div></div>}
         {userInfo.RoleId === 2 && <div>you are an admin <br /> <div id="divStars"><span className="stars">&#9733;</span><span className="stars">&#9733;</span><span className="stars">&#9734;</span></div> </div>}
         {userInfo.RoleId === 3 && <div>you are a user <br /> <div id="divStars"><span className="stars">&#9733;</span><span className="stars">&#9734;</span><span className="stars">&#9734;</span></div> </div>}
+        
+        {/* Link to settings page for updating user profile */}
         <Link to="/MyProfile/Settings/Update" className="settings">Settings</Link>
+        
+        {/* Button to trigger account deletion */}
         <button className="deleteAccount" onClick={handleDeleteAccount}>Delete my Account</button>
       </div>
     </div>

@@ -9,14 +9,6 @@ function MoviesPage(){
   const [Movies , setMovies] = useState(null);
   const [isAdmin , setIsAdmin] = useState('');
 
-  useEffect(()=>{
-    (async () =>{
-      const MoviesRespond = await fetch("http://localhost:8080/api/Movies");
-
-      const MoviesRespondData = await MoviesRespond.json();
-      setMovies(MoviesRespondData);
-    })();
-  },[]);
   const [isUser , setIsUser] = useState(false);
 
   useEffect(()=>{
@@ -33,9 +25,20 @@ function MoviesPage(){
     setIsAdmin(jwtDecode(token).RoleId)
     if(isAdmin === 3){
       navigat('/')
+      return
     }
 
   },[navigat,isAdmin]);
+
+  useEffect(()=>{
+    (async () =>{
+      const MoviesRespond = await fetch("http://localhost:8080/api/Movies");
+
+      const MoviesRespondData = await MoviesRespond.json();
+      setMovies(MoviesRespondData);
+    })();
+  },[]);
+
 
   const handleDeleteMovie = async(movieId,movieName)=>{
     const token = localStorage.getItem('jwt')

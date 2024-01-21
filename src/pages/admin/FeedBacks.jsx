@@ -48,6 +48,7 @@ const handleSendFeedBack = async(event) =>{
   const resOfPost = await postRes.json();
   if(resOfPost){
     console.log("massage maked")
+    window.location.reload();
   }else{
     console.log("massage didnt send")
   }
